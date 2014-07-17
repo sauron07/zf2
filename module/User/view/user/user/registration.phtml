@@ -1,0 +1,6 @@
+<?php $this->form->prepare() ?>
+<?= $this->form()->openTag($this->form) ?>
+<?= var_dump($this->formElement($this->form->get('csrfReg')))?>
+
+<?= $this->formElement($this->form->get('login')) ?>
+<?= $this->formSubmit($this->form->get('submit')) ?>
