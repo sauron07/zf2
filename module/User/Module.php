@@ -31,6 +31,15 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
     {
         return include __DIR__ . '/config/module.config.php';
     }
+
+    public function getServiceConfig()
+    {
+        return [
+            'invokables' => [
+                'User\Service\User' => 'User\Service\User',
+            ]
+        ];
+    }
     public function getFormElementConfig()
     {
         return array(

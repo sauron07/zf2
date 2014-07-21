@@ -9,6 +9,10 @@
 namespace User\Service;
 
 
-class User {
-
+class User
+{
+    public function validateForm()
+    {
+        return true;
+    }
 } 

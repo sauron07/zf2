@@ -1,6 +1,25 @@
-<?php $this->form->prepare() ?>
-<?= $this->form()->openTag($this->form) ?>
-<?= var_dump($this->formElement($this->form->get('csrfReg')))?>
+<?php
+    $form = $this->form;
+    $form->prepare();
+    $form->setAttribute('action', $this->url('registration'));
+    $form->setAttribute('method', 'post');
+?>
+<?php echo $this->form()->openTag($form); ?>
 
-<?= $this->formElement($this->form->get('login')) ?>
-<?= $this->formSubmit($this->form->get('submit')) ?>
+<div class="form_element">
+    <?php echo $this->formRow($form->get('login')); ?>
+</div>
+<div class="form_element">
+    <?php echo $this->formRow($form->get('password')); ?>
+</div>
+<div class="form_element">
+    <?php echo $this->formRow($form->get('email')); ?>
+</div>
+<div class="form_element">
+    <?php echo $this->formRow($form->get('captcha')); ?>
+</div>
+
+    <?php echo $this->formElement($form->get('csrfReg')); ?>
+    <?php echo $this->formElement($form->get('submit')); ?>
+
+<?php echo $this->form()->closeTag($this->form); ?>
