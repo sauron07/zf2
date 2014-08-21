@@ -8,7 +8,6 @@
 namespace User\Controller;
 
 use User\Entity\User;
-use User\Form\Registration;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Form\Element;
 use Zend\Mvc\MvcEvent;
@@ -16,11 +15,11 @@ use Zend\View\Model\ViewModel;
 
 class UserController extends AbstractActionController
 {
-    /** @var  \User\Service\User */
+    /** @var  \User\Service\Users */
     protected $service;
 
     public function onDispatch(MvcEvent $e){
-        $this->service = $this->getServiceLocator()->get('User\Service\User');
+        $this->service = $this->getServiceLocator()->get('User\Service\Users');
         return parent::onDispatch($e);
     }
 
@@ -41,27 +40,8 @@ class UserController extends AbstractActionController
         var_dump($user->getId()); die;
     }
 
-    public function registrationAction(){
-
-        /** @var \User\Form\Registration $form */
-        $form = $this->getServiceLocator()->get('FormElementManager')->get('User\Form\Registration');
-        $form->get('submit')->setValue('Registration');
-
-        if($this->request->isPost()){
-            $date = $this->request->getPost();
-            $form->setData($date);
-
-            if ($form->isValid()){
-                die('success');
-            }else{
-                var_dump($form);die;
-                die('fail');
-            }
-        }
-
-        return new ViewModel([
-            'form' => $form
-        ]);
-
+    public function cabinetAction()
+    {
+        die('cabinet');
     }
 }

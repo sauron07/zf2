@@ -11,6 +11,7 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\Stdlib\InitializableInterface;
 
 class Module
 {
@@ -19,6 +20,17 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+
+        $serviceManager = $e->getApplication()->getServiceManager();
+        $serviceManager->addInitializer([$this, 'initializableInterfaceCallback'],false);
+    }
+
+    public function initializableInterfaceCallback($instance)
+    {
+        if($instance instanceof InitializableInterface){
+            $instance->init();
+        }
+        return $instance;
     }
 
     public function getConfig()

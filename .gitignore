@@ -10,3 +10,4 @@ composer.lock
 vendor/bin
 .autoload_classmap\.php$
 /public/img/captcha/
+/node_modules

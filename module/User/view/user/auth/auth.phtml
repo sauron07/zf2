@@ -1,0 +1,34 @@
+<h1>Im in auth </h1>
+
+    <?php
+    $form = $this->form;
+    $form->prepare();
+    $form->setAttribute('action', $this->url('auth'));
+    $form->setAttribute('method', 'post');
+    $form->setAttribute('class', 'form-horizontal');
+
+    ?>
+    <?php echo $this->form()->openTag($form); ?>
+    <div class="control-group">
+        <label class="control-label" for="inputLogin"><?= $form->get('login')->getLabel() ?></label>
+        <div class="controls">
+            <?= $this->formElement($form->get('login')) ?>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="inputPassword"><?= $this->form->get('password')->getLabel() ?></label>
+        <div class="controls">
+            <?= $this->formElement($form->get('password')) ?>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <label class="checkbox">
+                <?= $this->formElement($form->get('rememberMe'))?>
+                <?= $form->get('rememberMe')->getLabel() ?>
+            </label>
+            <?= $this->formElement($form->get('submit')) ?>
+        </div>
+    </div>
+    <?php echo $this->form()->closeTag($this->form); ?>
+<!--</form>-->

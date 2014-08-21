@@ -7,8 +7,10 @@ use Zend\InputFilter\InputFilterInterface;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Captcha\Image as CaptchaImage;
 
-class Registration extends Form implements InputFilterProviderInterface
+class Registration extends Form implements
+    InputFilterProviderInterface
 {
+
     protected $captcha;
 
     public function setCaptcha(CaptchaAdapter $captcha){
@@ -97,35 +99,35 @@ class Registration extends Form implements InputFilterProviderInterface
                 'validators' => [
                     [
                         'name' => 'NotEmpty',
+                    ],
+                ]
+            ],
+            'email' => [
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'NotEmpty',
+                    ],
+                    [
+                        'name' => 'EmailAddress',
                     ]
                 ]
             ],
-//            'email' => [
-//                'required' => true,
-//                'validators' => [
-//                    [
-//                        'name' => 'NotEmpty',
-//                    ],
-//                    [
-//                        'name' => 'EmailAddress',
-//                    ]
-//                ]
-//            ],
-//            'password' => [
-//                'required' => true,
-//                'validators' => [
-//                    [
-//                        'name' => 'NotEmpty',
-//                    ],
-//                    [
-//                        'name' => 'StringLength',
-//                        'options' => [
-//                            'min' => 5,
-//                            'message' => 'Password wast be longer then 5 chars'
-//                        ]
-//                    ]
-//                ]
-//            ]
+            'password' => [
+                'required' => true,
+                'validators' => [
+                    [
+                        'name' => 'NotEmpty',
+                    ],
+                    [
+                        'name' => 'StringLength',
+                        'options' => [
+                            'min' => 5,
+                            'message' => 'Password wast be longer then 5 chars'
+                        ]
+                    ]
+                ]
+            ]
         ];
     }
 }
