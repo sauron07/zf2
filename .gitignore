@@ -7,7 +7,7 @@ nbproject
 .project
 .settings
 composer.lock
-vendor/bin
+vendor
 .autoload_classmap\.php$
 /public/img/captcha/
 /node_modules
